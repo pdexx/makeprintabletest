@@ -1,5 +1,18 @@
+//var data = new FormData();
 var data = new FormData();
-data.append("files[]", "C:\\Users\\PD\\Downloads\\103c73c5ef8e565714dd323998ca82ad.obj");
+var fileList="files[0]";
+var url;
+var el = document.querySelector("#userfile")
+el.addEventListener("change", passObj, false);
+function passObj(){
+  var fileList = this.files[0];
+  var url=el.value.toString();
+  console.log(fileList);
+  console.log(url);
+}
+
+
+data.append(fileList, url);
 
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
@@ -11,8 +24,8 @@ xhr.addEventListener("readystatechange", function () {
 });
 
 xhr.open("POST", "https://api.makeprintable.com/v3/operation/upload");
-xhr.setRequestHeader("Authorization", "Bearer d9c37d1f0655faff2def03d7296ca3306770022f");
+xhr.setRequestHeader("Authorization", "Bearer b84386d6cd92626415b423207d3444127d5ea2a5");
 xhr.setRequestHeader("Cache-Control", "no-cache");
-xhr.setRequestHeader("Postman-Token", "7e11d10d-a155-2f0c-6ce4-310ca3fd5bfa");
+xhr.setRequestHeader("Postman-Token", "57ef0458-5489-caad-f88c-b34c644fb133");
 
 xhr.send(data);
